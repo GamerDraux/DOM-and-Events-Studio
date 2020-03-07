@@ -7,6 +7,7 @@ let shuttleBackground=null;
 let shuttleAltitudeObject = null;
 let land=null;
 let abort=null
+let rocket=null
 
 function varInit(){
     takeOff = document.getElementById("takeoff");
@@ -18,6 +19,8 @@ function varInit(){
     console.log ('window loaded');
     land = document.getElementById("landing");
     abort= document.getElementById("missionAbort");
+    rocket= document.getElementById('rocket');
+    right=document.getElementById('right');
 };
 
 function launchShuttle(){
@@ -44,4 +47,9 @@ function abortMission(){
         shuttleAltitude=0;
         shuttleAltitudeObject.innerHTML=shuttleAltitude;
     }
+}
+
+function moveRight(){
+    let position = rocket.style.position;
+    console.log (position);
 }
