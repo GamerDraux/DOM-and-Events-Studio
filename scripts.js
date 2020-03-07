@@ -13,7 +13,6 @@ function varInit(){
 }
 
 
-
 takeOff.addEventListener('click', function(){
     flightStatus.innerHTML="Shuttle in flight";
 });
