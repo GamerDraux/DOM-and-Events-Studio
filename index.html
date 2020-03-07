@@ -33,6 +33,9 @@
         </div>
         <div style="text-align: center;">
             <button id = "takeoff">Take off</button>
+            <script>document.getElementById('takeoff').addEventListener('click', function(){
+                document.getElementById('flightStatus').innerHTML="Shuttle in flight";
+            });</script>
             <button id = "landing">Land</button>
             <button id = "missionAbort">Abort Mission</button>
     </div>
