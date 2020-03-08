@@ -10,6 +10,7 @@ let abort=null
 let rocket=null
 let leftMovement=0;
 let bottomMovement=0;
+let shuttleHasBeenLaunched = false;
 
 function varInit(){
     takeOff = document.getElementById("takeoff");
@@ -30,9 +31,10 @@ function varInit(){
 
 function launchShuttle(){
             if (window.confirm("Confirm that the shuttle is ready for takeoff.")===true){
+                shuttleHasBeenLaunched=true;
                 flightStatus.innerHTML="Shuttle in flight";
                 shuttleBackground.style.backgroundColor = "blue";
-                shuttleAltitude+=10000;
+                moveUp();
                 shuttleAltitudeObject.innerHTML=shuttleAltitude;
             }
 };
@@ -43,6 +45,11 @@ function landShuttle(){
     shuttleBackground.style.backgroundColor= "green";
     shuttleAltitude=0;
     shuttleAltitudeObject.innerHTML=shuttleAltitude;
+    bottomMovement=0;
+    leftMovement=0;
+    rocket.style.left=leftMovement;
+    rocket.style.bottom=bottomMovement;
+    shuttleHasBeenLaunched=false;
 }
 
 function abortMission(){
@@ -51,29 +58,54 @@ function abortMission(){
         shuttleBackground.style.backgroundColor="green";
         shuttleAltitude=0;
         shuttleAltitudeObject.innerHTML=shuttleAltitude;
+        bottomMovement=0;
+        leftMovement=0;
+        rocket.style.left=leftMovement;
+        rocket.style.bottom=bottomMovement;
+        shuttleHasBeenLaunched=false;
     }
 }
 
 function moveRight(){
+    if (shuttleHasBeenLaunched===true){
     leftMovement=leftMovement+10;
     rocket.style.left = leftMovement+"px";
+    console.log (leftMovement,bottomMovement);
+    } else {
+        alert("Manuvering thrusters not engaged while shuttle has not been launched");
+    }
 }
 
 function moveLeft(){
+    if (shuttleHasBeenLaunched===true){
     leftMovement=leftMovement-10;
     rocket.style.left = leftMovement+"px";
+    console.log (leftMovement,bottomMovement);
+    } else {
+        alert("Manuvering thrusters not engaged while shuttle has not been launched");
+    }
 }
 
 function moveUp(){
+    if (shuttleHasBeenLaunched===true){
     bottomMovement=bottomMovement+10;
     shuttleAltitude+=10000;
     shuttleAltitudeObject.innerHTML=shuttleAltitude;
     rocket.style.bottom = bottomMovement+"px";
+    console.log (leftMovement,bottomMovement);
+    } else {
+    alert("Manuvering thrusters not engaged while shuttle has not been launched");
+    }
 }
 
 function moveDown(){
+    if (shuttleHasBeenLaunched===true){
     bottomMovement=bottomMovement-10;
     shuttleAltitude-=10000;
     shuttleAltitudeObject.innerHTML=shuttleAltitude;
     rocket.style.bottom = bottomMovement+"px";
+    console.log (leftMovement,bottomMovement);
+    } else {
+    alert("Manuvering thrusters not engaged while shuttle has not been launched");
+    }
 }
