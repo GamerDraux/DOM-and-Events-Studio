@@ -23,12 +23,12 @@
                 <img src = "LaunchCode_rocketline_white.png" height = "75" width = "75" id = "rocket"/>
             </div>
             <div style = "text-align: center; display: inline-block;">
-                    <button id="up">Up</button>
-                    <button id="down">Down</button>
-                    <button id="right">Right</button>
-                    <button id="left">Left</button>
-                    <h3>Space Shuttle Height</h3>
-                    <p id='spaceShuttleHeight'>0</p><p style = "display: inline-block;"> miles</p>
+                <button id="up">Up</button>
+                <button id="down">Down</button>
+                <button id="right">Right</button>
+                <button id="left">Left</button>
+                <h3>Space Shuttle Height</h3>
+                <p id='spaceShuttleHeight'>0</p><p style = "display: inline-block;"> miles</p>
             </div>
         </div>
         <div style="text-align: center;">
@@ -36,15 +36,15 @@
             <button id = "landing">Land</button>
             <button id = "missionAbort">Abort Mission</button>
         </div>
+        <script>varInit();</script>
         <script>
-        window.onload = varInit();
-        takeoff.addEventListener('click', launchShuttle);
-        land.addEventListener('click', landShuttle);
-        abort.addEventListener('click',abortMission);
-        rightButton.addEventListener('click', moveRight);
-        leftButton.addEventListener('click', moveLeft);
-        upButton.addEventListener('click', moveUp);
-        downButton.addEventListener('click', moveDown);
-        </script>
+            takeoff.addEventListener('click', launchShuttle);
+            land.addEventListener('click', landShuttle);
+            abort.addEventListener('click',abortMission);
+            rightButton.addEventListener('click', moveRight);
+            leftButton.addEventListener('click', moveLeft);
+            upButton.addEventListener('click', moveUp);
+            downButton.addEventListener('click', moveDown);
+            </script>
     </body>
 </html>
