@@ -8,7 +8,7 @@ let shuttleAltitudeObject = null;
 let land=null;
 let abort=null
 let rocket=null
-let leftMovement=0;
+let leftMovement=220;
 let bottomMovement=0;
 let shuttleHasBeenLaunched = false;
 
@@ -31,16 +31,29 @@ function varInit(){
 
 function launchShuttle(){
     if (shuttleHasBeenLaunched!==true){
+        if (flightStatus.innerHTML==="Mission Aborted"){
+            let abortReset=confirm("Previouis mission aborted, system reset recommended before takeoff");
+            if (abortReset===true){
+                alert('Systems reset confirmed.  Please enjoy your flight');
+            } else{
+                alert("Okay Commander, whatever you say.  It's your ship.");
+            }
+        }
             if (window.confirm("Confirm that the shuttle is ready for takeoff.")===true){
                 shuttleHasBeenLaunched=true;
                 flightStatus.innerHTML="Shuttle in flight";
                 shuttleBackground.style.backgroundColor = "blue";
-                moveUp();
+                for (let i=0; i<10; i++){
+                 moveUp();
+                }
                 shuttleAltitudeObject.innerHTML=shuttleAltitude;
+            } else {
+                alert("Shuttle launch sequence aborted");
             }
-    } else {
+             } else {
         alert("Shuttle is already in flight");
-    }        
+            }  
+          
 };
 
 function landShuttle(){
@@ -51,9 +64,9 @@ function landShuttle(){
     shuttleAltitude=0;
     shuttleAltitudeObject.innerHTML=shuttleAltitude;
     bottomMovement=0;
-    leftMovement=0;
-    rocket.style.left=leftMovement;
-    rocket.style.bottom=bottomMovement;
+    leftMovement=220;
+    rocket.style.left=leftMovement+"px";
+    rocket.style.bottom=bottomMovement+"px";
     shuttleHasBeenLaunched=false;
     } else {
         alert('Shuttle already on landing pad');
@@ -70,10 +83,12 @@ function abortMission(){
         shuttleAltitude=0;
         shuttleAltitudeObject.innerHTML=shuttleAltitude;
         bottomMovement=0;
-        leftMovement=0;
-        rocket.style.left=leftMovement;
-        rocket.style.bottom=bottomMovement;
+        leftMovement=220;
+        rocket.style.left=leftMovement+"px";
+        rocket.style.bottom=bottomMovement+"px";
         shuttleHasBeenLaunched=false;
+        } else {
+            alert("Very well, ever onward!");
         }
     }
 }
@@ -93,7 +108,7 @@ function moveRight(){
 }
 
 function moveLeft(){
-    if (leftMovement<=0){
+    if (leftMovement<=0&&shuttleHasBeenLaunched===true){
         alert('WARNING! Exceeding operational communications range');
     } else {
          if (shuttleHasBeenLaunched===true){
@@ -123,7 +138,7 @@ function moveUp(){
 }
 
 function moveDown(){
-    if (bottomMovement<=0){
+    if (bottomMovement<=0&&shuttleHasBeenLaunched===true){
         alert('DANGER! Altitude too low, crash imminent');
     } else {
          if (shuttleHasBeenLaunched===true){
