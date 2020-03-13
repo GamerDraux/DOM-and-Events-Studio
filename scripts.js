@@ -27,7 +27,16 @@ function varInit(){
     leftButton=document.getElementById('left');
     upButton=document.getElementById('up');
     downButton=document.getElementById('down');
+    takeoff.addEventListener('click', launchShuttle);
+    land.addEventListener('click', landShuttle);
+    abort.addEventListener('click',abortMission);
+    rightButton.addEventListener('click', moveRight);
+    leftButton.addEventListener('click', moveLeft);
+    upButton.addEventListener('click', moveUp);
+    downButton.addEventListener('click', moveDown);
 };
+
+varInit();
 
 function launchShuttle(){
     if (shuttleHasBeenLaunched!==true){
